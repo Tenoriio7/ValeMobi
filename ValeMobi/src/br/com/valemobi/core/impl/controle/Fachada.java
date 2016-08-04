@@ -86,7 +86,6 @@ public class Fachada implements IFachada {
 		System.out.println(entidade.getClass().getName());
 
 			IDAO dao = daos.get(nmClasse);
-			System.out.println("dao" + dao);
 			try {
 				dao.Salvar(entidade);
 				List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();

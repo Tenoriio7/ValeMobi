@@ -48,7 +48,12 @@
 				<f:selectItems value="#{mercadoriaBean.listaGeneros}" var="genero" 
 				itemLabel="#{genero.descricao}" itemValue="#{genero.codigo}"/>
 			</p:selectOneMenu>
-
+			
+			<h:outputLabel value="Tipo de Negocio"></h:outputLabel>
+			<p:selectOneMenu value="#{mercadoriaBean.mercadoriaCadastro.tipoNegocio}">
+				<f:selectItem itemLabel="Venda" itemValue="Venda"/>
+				<f:selectItem itemLabel="Compra" itemValue="Compra"/>
+			</p:selectOneMenu>
 			
 			</h:panelGrid>	
 			

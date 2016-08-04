@@ -26,9 +26,9 @@ public class MercadoriaDAO implements IDAO {
 		
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("INSERT INTO db_valemobi.tb_mercadoria(mer_codigo,mer_nome,mer_quantidade,mer_preco,mer_tipo) ");
+		sql.append("INSERT INTO db_valemobi.tb_mercadoria(mer_codigo,mer_nome,mer_quantidade,mer_preco,mer_tipo,mer_tipo_negocio) ");
 		
-		sql.append("VALUES (?,?,?,?,?)");		
+		sql.append("VALUES (?,?,?,?,?,?)");		
 		Connection con = Conexao.getConnection();
 		PreparedStatement pstm = (PreparedStatement) con.prepareStatement(sql.toString(),Statement.RETURN_GENERATED_KEYS);
 		
@@ -40,6 +40,7 @@ public class MercadoriaDAO implements IDAO {
 			pstm.setLong(++i,mercadoria.getQuantidade());
 			pstm.setDouble(++i,mercadoria.getPreco());
 			pstm.setLong(++i,mercadoria.getTipoDeMercadoria().getCodigo());
+			pstm.setString(++i, mercadoria.getTipoNegocio());
 			pstm.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -76,8 +77,8 @@ public class MercadoriaDAO implements IDAO {
 				mercadoria.setPreco(rSet.getDouble("mer_preco"));
 				mercadoria.setQuantidade(rSet.getInt("mer_quantidade"));
 				mercadoria.getTipoDeMercadoria().setCodigo((rSet.getLong("mer_tipo")));
+				mercadoria.setTipoNegocio(rSet.getString("mer_tipo_negocio"));
 				lista.add(mercadoria);
-				System.out.println(mercadoria);
 			}
 			
 			
@@ -112,6 +113,7 @@ public class MercadoriaDAO implements IDAO {
 				mercadoria.setPreco(rSet.getDouble("mer_preco"));
 				mercadoria.setQuantidade(rSet.getInt("mer_quantidade"));
 				mercadoria.getTipoDeMercadoria().setCodigo((rSet.getLong("mer_tipo")));
+				mercadoria.setTipoNegocio(rSet.getString("mer_tipo_negocio"));
 				
 			}
 			
@@ -128,7 +130,7 @@ public class MercadoriaDAO implements IDAO {
 	
 	public void Excluir(EntidadeDominio entidade) {
 		
-		if(!(entidade instanceof Genero))
+		if(!(entidade instanceof Mercadoria))
 			return;
 		
 		Mercadoria mercadoria = new Mercadoria();
@@ -163,9 +165,9 @@ public class MercadoriaDAO implements IDAO {
 		
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("UPDATE db_valemobi.tb_mercadoria set mer_codigo =? , mer_nome = ? ");
-		sql.append(" mer_quantidade =? , mer_preco = ? , mer_tipo = ?");
-		sql.append("WHERE gen_codigo=?");
+		sql.append("UPDATE db_valemobi.tb_mercadoria set mer_codigo =? , mer_nome = ?, ");
+		sql.append(" mer_quantidade =? , mer_preco = ? , mer_tipo = ?, mer_tipo_negocio= ?");
+		sql.append("WHERE mer_codigo=?");
 
 		
 		Connection con = Conexao.getConnection();
@@ -178,6 +180,8 @@ public class MercadoriaDAO implements IDAO {
 			pstm.setLong(++i,mercadoria.getQuantidade());
 			pstm.setDouble(++i,mercadoria.getPreco());
 			pstm.setLong(++i,mercadoria.getTipoDeMercadoria().getCodigo());
+			pstm.setString(++i, mercadoria.getTipoNegocio());
+			pstm.setLong(++i, mercadoria.getCodigo());
 			pstm.executeUpdate();
 			
 		} catch (SQLException e) {

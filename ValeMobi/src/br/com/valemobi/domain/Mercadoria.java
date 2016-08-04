@@ -6,6 +6,14 @@ public class Mercadoria  extends EntidadeDominio{
 	private Integer quantidade;
 	private Double preco;
 	private Genero tipoDeMercadoria;
+	private String tipoNegocio;
+	
+	public String getTipoNegocio() {
+		return tipoNegocio;
+	}
+	public void setTipoNegocio(String tipoNegocio) {
+		this.tipoNegocio = tipoNegocio;
+	}
 	
 	 public Genero getTipoDeMercadoria() {
 		 if(tipoDeMercadoria == null)
