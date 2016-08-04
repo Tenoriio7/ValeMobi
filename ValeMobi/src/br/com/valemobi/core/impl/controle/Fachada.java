@@ -32,7 +32,6 @@ public class Fachada implements IFachada {
 	public Fachada() {
 		/* Intânciando o Map de	 DAOS */
 		daos = new HashMap<String, IDAO>();
-		/* Intânciando o Map de Regras de Negócio */
 
 		/* Criando instâncias dos DAOs a serem utilizados */
 		
@@ -44,39 +43,6 @@ public class Fachada implements IFachada {
 		daos.put(Genero.class.getName(), (IDAO) generoDAO);
 		daos.put(Mercadoria.class.getName(), (IDAO) mercadoriaDAO);	
 
-		/* Criando instâncias de regras de negócio a serem utilizados */
-		//ValidadorDadosObrigatoriosFornecedor vrDadosObrigatoriosFornecedor = new ValidadorDadosObrigatoriosFornecedor();
-
-		/*
-		 * Criando uma lista para conter as regras de negócio de fornencedor
-		 * quando a operação for Salvar
-		 */
-		//List<IStrategy> rnsSalvarFornecedor = new ArrayList<IStrategy>();
-		
-		/*
-		 * Adicionando as regras a serem utilizadas na operação Salvar do
-		 * fornecedor
-		 */
-		//rnsSalvarFornecedor.add(vrDadosObrigatoriosFornecedor);
-		
-
-		/*
-		 * Cria o mapa que poderá conter todas as listas de regras de negócio
-		 * específica por operação do fornecedor
-		 */
-		/*
-		 * Adiciona a listra de regras na operação Salvar no mapa do fornecedor
-		 * (lista criada na linha 70)
-		 */
-		//rnsFornecedor.put("Salvar", rnsSalvarFornecedor);
-		// usa a mesma rns por ser as mesmas regras de negocio
-		//rnsFornecedor.put("Editar", rnsSalvarFornecedor);
-
-		/*
-		 * Adiciona o mapa(criado na linha 79) com as regras indexadas pelas
-		 * operações no mapa geral indexado pelo nome da entidade
-		 */
-		//rns.put(Fornecedor.class.getName(), rnsFornecedor);
 
 	}
 

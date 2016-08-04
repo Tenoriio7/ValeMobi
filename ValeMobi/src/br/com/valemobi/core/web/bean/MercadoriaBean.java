@@ -17,7 +17,7 @@ import br.com.valemobi.domain.Mercadoria;
 public class MercadoriaBean {
 	private Mercadoria mercadoriaCadastro;
 	List<EntidadeDominio> listaMercadoria;
-	List<EntidadeDominio> listaMercadoriasFiltradas ;
+	List<EntidadeDominio> listaMercadoriasFiltradas;
 	List<EntidadeDominio> listaGeneros = new ArrayList<>();
 	Fachada Fachada = new Fachada();
 	private String acao;
@@ -60,7 +60,7 @@ public class MercadoriaBean {
 	}
 
 	public List<EntidadeDominio> getListaMercadoria() {
-		
+
 		return listaMercadoria;
 	}
 
@@ -69,7 +69,7 @@ public class MercadoriaBean {
 	}
 
 	public List<EntidadeDominio> getListaMercadoriasFiltradas() {
-		
+
 		return listaMercadoriasFiltradas;
 	}
 
@@ -99,7 +99,6 @@ public class MercadoriaBean {
 		try {
 			Fachada fachada = new Fachada();
 			listaMercadoria = fachada.listar(new Mercadoria());
-			System.out.println(listaMercadoria.get(0).getCodigo());
 		} catch (RuntimeException ex) {
 
 			FacesUtil.adicionarMSGError("Erro ao tentar listar os  Generos:" + ex.getMessage());

@@ -31,14 +31,17 @@
 			
 			<h:outputLabel value="Nome"></h:outputLabel>
 			<h:inputText maxlength="50" size="30" value="#{mercadoriaBean.mercadoriaCadastro.nome}"
+			required="true" requiredMessage="Insira o Nome"
 			/>
 			
 			<h:outputLabel value="Quantidade"></h:outputLabel>
 			<h:inputText maxlength="50" size="30" value="#{mercadoriaBean.mercadoriaCadastro.quantidade}"
+			required="true" requiredMessage="Insira a quantidade"
 			/>
 			
 			<h:outputLabel value="Preço"></h:outputLabel>
 			<h:inputText maxlength="50" size="30" value="#{mercadoriaBean.mercadoriaCadastro.preco}"
+			required="true" requiredMessage="Insira o preço"
 			/>
 			
 			<h:outputLabel value="Tipo de Mercadoria"></h:outputLabel>
