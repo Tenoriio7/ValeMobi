@@ -1,4 +1,4 @@
-package br.com.valemobi.core.web.bean;
+	package br.com.valemobi.core.web.bean;
 
 import java.util.List;
 
