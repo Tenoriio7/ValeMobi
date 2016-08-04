@@ -9,12 +9,14 @@ import java.util.List;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
+import br.com.valemobi.core.IDAO;
 import br.com.valemobi.core.factory.Conexao;
+import br.com.valemobi.domain.EntidadeDominio;
 import br.com.valemobi.domain.Genero;
 
-public class GeneroDAO {
+public class GeneroDAO implements IDAO {
 	
-	public Long Salvar(Genero entidade) throws SQLException {
+	public Long Salvar(EntidadeDominio entidade) throws SQLException {
 		if(!(entidade instanceof Genero))
 			return null;
 		
@@ -23,7 +25,7 @@ public class GeneroDAO {
 		
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("INSERT INTO db_valemobii.tb_genero(gen_codigo,gen_descricao) ");
+		sql.append("INSERT INTO db_valemobi.tb_genero(gen_codigo,gen_descricao) ");
 		
 		sql.append("VALUES (?,?)");		
 		Connection con = Conexao.getConnection();
@@ -45,11 +47,11 @@ public class GeneroDAO {
 
 	}
 
-	public List<Genero> listar() {
+	public List<EntidadeDominio> listar() {
 			
 		StringBuffer sql = new StringBuffer(); 
 		sql.append("SELECT * FROM db_valemobi.tb_genero;");			
-		List<Genero> lista = new ArrayList<Genero>();
+		List<EntidadeDominio> lista = new ArrayList<>();
 		
 		Connection con = Conexao.getConnection();
 		
@@ -107,7 +109,7 @@ public class GeneroDAO {
 	}
 	
 	
-	public void Excluir(Genero entidade) {
+	public void Excluir(EntidadeDominio entidade) {
 		
 		if(!(entidade instanceof Genero))
 			return;
@@ -135,7 +137,7 @@ public class GeneroDAO {
 	
 	
 	
-	public void Editar(Genero entidade) {
+	public void Editar(EntidadeDominio entidade) {
 		if(!(entidade instanceof Genero))
 			return;
 		
@@ -169,6 +171,13 @@ public class GeneroDAO {
 		gen.setCodigo(1L);
 		gen.setDescricao("teste3");
 		dao.Excluir(gen);
+	}
+
+
+	@Override
+	public EntidadeDominio consultar(EntidadeDominio entidade) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

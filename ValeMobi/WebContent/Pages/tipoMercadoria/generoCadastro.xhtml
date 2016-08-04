@@ -5,7 +5,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
- <ui:composition template="/templates/modeloGeral.xhtml">
+ <ui:composition template="/Pages/templates/modeloGeral.xhtml">
  		<ui:define name="metadate">
 		<f:metadata>
 			<f:event listener="#{generoBean.carregarCadastro}" type="preRenderView"></f:event>
@@ -30,7 +30,6 @@
 			id="txtdescricao"/>
 			</h:panelGrid>			
 			<h:panelGrid columns="6">
-			<p:commandButton value="Limpar" actionListener="#{generoBean.novo}" update=":frmFabCad:pnlFabCadDados"></p:commandButton>
 			<!-- propriedade update serve para informar quem será atualizadovia ajax (id  do growl :msgglobal em template-->
 			<p:commandButton id="btsalvar" value="Salvar" actionListener="#{generoBean.salvar}" update=":msgGlobal :frmFabCad:pnlFabCadDados"
 			rendered="#{generoBean.acao == 'Salvar'}"/>

@@ -1,6 +1,6 @@
 package br.com.valemobi.domain;
 
-public class Genero  {
+public class Genero  extends EntidadeDominio {
 
 	private Long codigo;
 	
@@ -16,6 +16,8 @@ public class Genero  {
 	}
 
 	public Long getCodigo() {
+		if(codigo == null)
+			codigo = 0L;
 		return codigo;
 	}
 	public void setCodigo(Long codigo) {

@@ -1,31 +1,25 @@
 package br.com.valemobi.core.web.bean;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.valemobi.core.impl.controle.Fachada;
+import br.com.valemobi.core.util.FacesUtil;
+import br.com.valemobi.domain.EntidadeDominio;
 import br.com.valemobi.domain.Genero;
 
 @ManagedBean
 @ViewScoped
 public class GeneroBean {
 	private Genero GeneroCadastro;
-	List<Genero> listaGeneros;
+	List<EntidadeDominio> listaGeneros;
 	List<Genero> listaGenerosFiltrados;
+	Fachada Fachada =  new  Fachada();
 	private String acao;
 	private Long codigo;
-	private static Map<String, ICommand> commands;
 	
-	public GeneroBean() {
-		
-		commands = new HashMap<String, ICommand>();
-		commands.put("Salvar", new SalvarCommand());
-		commands.put("Excluir", new ExcluirCommand());
-		commands.put("Editar", new AlterarCommand());
-	}
 	
 	public String getAcao() {
 		return acao;
@@ -51,11 +45,11 @@ public class GeneroBean {
 		this.GeneroCadastro = GeneroCadastro;
 	}
 	
-	public List<Genero> getListaGeneros() {
+	public List<EntidadeDominio> getListaGeneros() {
 		return listaGeneros;
 	}
 	
-	public void setListaGeneros(List<Genero> listaGeneros) {
+	public void setListaGeneros(List<EntidadeDominio> listaGeneros) {
 		this.listaGeneros = listaGeneros;
 	}
 	
@@ -75,11 +69,10 @@ public class GeneroBean {
 	{
 		try
 		{//Obtêm o command para executar a respectiva operação
-			ICommand command = commands.get(acao);
 			/*Executa o command que chamará a fachada para executar a operação requisitada
 			 * o retorno é uma instância da classe resultado que pode conter mensagens derro 
 			 * ou entidades de retorno			 */
-			command.execute(GeneroCadastro);
+			Fachada.salvar(GeneroCadastro);
 			GeneroCadastro = new Genero();
 			
 		}catch(RuntimeException ex)
@@ -124,11 +117,10 @@ public class GeneroBean {
 		try
 		{
 			//Obtêm o command para executar a respectiva operação
-			ICommand command = commands.get(acao);
 			/*Executa o command que chamará a fachada para executar a operação requisitada
 			 * o retorno é uma instância da classe resultado que pode conter mensagens derro 
 			 * ou entidades de retorno			 */
-			command.execute(GeneroCadastro);
+			Fachada.excluir(GeneroCadastro);
 			GeneroCadastro = new Genero();
 			
 		}catch(RuntimeException ex)
@@ -146,11 +138,10 @@ public class GeneroBean {
 		try
 		{
 			//Obtêm o command para executar a respectiva operação
-			ICommand command = commands.get(acao);
 			/*Executa o command que chamará a fachada para executar a operação requisitada
 			 * o retorno é uma instância da classe resultado que pode conter mensagens derro 
 			 * ou entidades de retorno			 */
-			command.execute(GeneroCadastro);
+			Fachada.alterar(GeneroCadastro);
 			GeneroCadastro = new Genero();
 			
 		}catch(RuntimeException ex)
